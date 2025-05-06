@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real estate project registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="Registeration">
+        <h1>Buy your unit now in Ras elhekma</h1>
+        <h3>Fill in the Form and we will contact you within 24 hours</h3>
+        <form class="registration-form" name="submit-to-google-sheet">
+            <div class="input-section">
+                <input type="text" name="Full Name" placeholder="Full Name" required>
+            </div>
+            
+            <div class="input-section">
+                <input type="tel" name="Phone Number" placeholder="Phone Number" required>
+            </div>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+<script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbysS6L4VUFJ8ry_Hk01KrpHoReb-OFjz-rjrkVxAD8xoULyVRMfuaFhTZ5g2R6RPMW1bQ/exec'
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
