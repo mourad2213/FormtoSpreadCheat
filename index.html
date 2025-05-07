@@ -9,7 +9,7 @@
     <div class="Registeration">
         <h1>Buy your unit now in Ras elhekma</h1>
         <h3>Fill in the Form and we will contact you within 24 hours</h3>
-        <form class="registration-form" name="submit-to-google-sheet">
+        <form class="registration-form"id ="registration-form" name="submit-to-google-sheet">
             <div class="input-section">
                 <input type="text" name="Full Name" placeholder="Full Name" required>
             </div>
@@ -18,7 +18,7 @@
                 <input type="tel" name="Phone Number" placeholder="Phone Number" required>
             </div>
             
-            <button type="submit">Submit</button>
+            <button type="submit" id="submit-btn" onclick="openpopup()">Submit</button>
         </form>
     </div>
 <script>
@@ -31,6 +31,29 @@
             .then(response => console.log('Success!', response))
             .catch(error => console.error('Error!', error.message))
         })
-      </script>
+</script>
+<div class="popup" id="popup">
+    <img src="404-tick.png">
+    <h2>Thank You!</h2>
+    <p>Your info has been recorded successfully.</p>
+    <button type="button" onclick="closepopup()">OK</button>
+</div>
+<script>
+    let registrationform = document.getElementById('registration-form');
+    let submitBtn = document.getElementById('submit-btn');
+    let popup=document.getElementById("popup");
+    function openpopup(){
+        registrationform.classList.add("popup-active");
+        popup.classList.add("open-popup")
+        popup.classList.remove("close-popup");
+
+    }
+    function closepopup(){
+        popup.classList.remove("open-popup");
+        popup.classList.add("close-popup");
+        form.reset();
+
+    }
+</script>
 </body>
 </html>
